@@ -1,0 +1,54 @@
+@import '~font-awesome/css/font-awesome.min.css';
+
+@import './styles/colors.css';
+@import './styles/defaults.css';
+
+.large-padding{
+    padding: 10px 15px;
+}
+.small-font{
+    font-size: 0.8rem;
+}
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-nav .float-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Crea espacio entre 'Mis Listas' y el icono de salir */
+}
+.main-nav a{
+    text-decoration: none;
+    color: inherit;
+}
+.form control{
+    width: 100%;
+    outline: 0;
+    border: 0;
+    display: block;
+    padding: 10px 15px;
+    margin-top: 1em;
+    font-size: 1em;
+    box-shadow:0 1px 3px rgb(0,0,0,1.12),0 1px 2px rgb(0,0,0,0.24);
+    box-sizing: border-box;
+}
+.btn{
+border:0;
+outline:0;
+border-radius:4px;
+padding: 1em 1.5em;
+box-shadow:0 1px 3px rgb(0,0,0,1.12),0 1px 2px rgb(0,0,0,0.24);
+font-size: 1em;
+box-sizing: border-box;
+text-transform: uppercase;
+cursor: pointer;
+}
+.top-space{
+    margin-top: 1em;
+}
+.full-width{
+    width: 100%;
+}

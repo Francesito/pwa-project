@@ -1,0 +1,42 @@
+<main class="large-padding">
+    <h1>Listas</h1>
+    <form #form="ngForm" (ngSubmit)="save()" [attr.aria-busy]="guardando">
+        <div class="top-space">
+            <label for="list-title">Nombre de la lista</label>
+            <input id="list-title" type="text" name="title" [(ngModel)]="list.title"
+                placeholder="Nombre de la lista" class="form-control" required [disabled]="guardando">
+        </div>
+        <div class="top-space">
+            <label for="list-items">Elementos (uno por línea)</label>
+            <textarea id="list-items" name="items" [(ngModel)]="elementos"
+                rows="5" [disabled]="guardando"></textarea>
+        </div>
+        <div class="top-space">
+            <button type="submit" class="btn blue light-text full-width"
+                [disabled]="form.invalid || !list.title.trim() || guardando">
+                {{ guardando ? 'Guardando…' : 'Añadir lista' }}
+            </button>
+        </div>
+        <p *ngIf="mensaje" role="status">{{ mensaje }}</p>
+        <p *ngIf="error" role="alert">{{ error }}</p>
+    </form>
+    <section class="top-space" aria-label="Listas guardadas">
+        <h2>Mis listas</h2>
+        <p *ngIf="errorCarga" role="alert">{{ errorCarga }}</p>
+        <p *ngIf="cargando" role="status">Cargando listas…</p>
+        <p *ngIf="!cargando && !errorCarga && !listasGuardadas.length">Todavía no tienes listas. Crea la primera arriba.</p>
+        <ul *ngIf="listasGuardadas.length">
+            <li *ngFor="let lista of listasGuardadas">
+                <strong>{{ lista.title }}</strong>
+                <ul *ngIf="lista.items && lista.items.length">
+                    <li *ngFor="let item of lista.items">{{ item }}</li>
+                </ul>
+                <button type="button" (click)="eliminar(lista)"
+                    [disabled]="!!eliminando || !lista.id"
+                    [attr.aria-label]="'Eliminar lista ' + lista.title">
+                    {{ eliminando === lista.id ? 'Eliminando…' : 'Eliminar' }}
+                </button>
+            </li>
+        </ul>
+    </section>
+</main>

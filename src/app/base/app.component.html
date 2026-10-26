@@ -1,0 +1,22 @@
+    <nav class="main-nav blue large-padding light-text">
+      <a routerLink="/">
+        <span class="nav-title">What to do</span>
+      </a>
+      <a routerLink="/login" *ngIf="!(afAuth.authState | async)">Iniciar sesión</a>
+      <div class="float-rigt" *ngIf="afAuth.authState | async">
+        <a routerLink="/creators">Crear lista</a>
+        <a routerLink="/creators">
+          <i class="fa fa-list"></i>
+          <span class ="small-font">Mis Listas</span>
+        </a>
+
+        <button type="button" (click)="logout()" [disabled]="cerrandoSesion">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          {{ cerrandoSesion ? 'Cerrando sesión…' : 'Cerrar sesión' }}
+        </button>
+      </div>
+    </nav>
+
+      <p *ngIf="errorSalida" role="alert">{{ errorSalida }}</p>
+      <router-outlet></router-outlet>
+      

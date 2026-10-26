@@ -1,0 +1,13 @@
+<article class="tarjeta">
+  <h2>{{ titulo }}</h2>
+  <p>{{ descripcion }}</p>
+
+  <button
+    type="button"
+    [attr.aria-expanded]="mostrarDetalles"
+    (click)="alternarDetalles()">
+    {{ mostrarDetalles ? 'Ocultar detalles' : textoBoton }}
+  </button>
+
+  <p *ngIf="mostrarDetalles">{{ detalles }}</p>
+</article>
